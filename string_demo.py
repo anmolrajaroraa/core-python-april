@@ -170,4 +170,175 @@ Traceback (most recent call last):
   File "<pyshell#85>", line 1, in <module>
     str1.index('s', 79)
 ValueError: substring not found
+>>>
+Python 3.8.1 (v3.8.1:1b293b6006, Dec 18 2019, 14:08:53) 
+[Clang 6.0 (clang-600.0.57)] on darwin
+Type "help", "copyright", "credits" or "license()" for more information.
+>>> dir(str)
+['__add__', '__class__', '__contains__', '__delattr__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__getitem__', '__getnewargs__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__iter__', '__le__', '__len__', '__lt__', '__mod__', '__mul__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__rmod__', '__rmul__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', 'capitalize', 'casefold', 'center', 'count', 'encode', 'endswith', 'expandtabs', 'find', 'format', 'format_map', 'index', 'isalnum', 'isalpha', 'isascii', 'isdecimal', 'isdigit', 'isidentifier', 'islower', 'isnumeric', 'isprintable', 'isspace', 'istitle', 'isupper', 'join', 'ljust', 'lower', 'lstrip', 'maketrans', 'partition', 'replace', 'rfind', 'rindex', 'rjust', 'rpartition', 'rsplit', 'rstrip', 'split', 'splitlines', 'startswith', 'strip', 'swapcase', 'title', 'translate', 'upper', 'zfill']
+>>> "ram123".isalnum()
+True
+>>> "ram_123".isalnum()
+False
+>>> "ram_123".isascii()
+True
+>>> "ram_123å".isascii()
+False
+>>> "ram_123å".isdecimal()
+False
+>>> "1234567890".isdecimal()
+True
+>>> $123 = "hello"
+SyntaxError: invalid syntax
+>>> var$123 = "hello"
+SyntaxError: invalid syntax
+>>> var_123 = "hello"
+>>> print("Hello everyone this is python it's a beginner's language")
+Hello everyone this is python it's a beginner's language
+>>> print("Hello everyone \nthis is python \nit's a beginner's language")
+Hello everyone 
+this is python 
+it's a beginner's language
+>>> "a".isprintable()
+True
+>>> "\n".isprintable()
+False
+>>> str1 = "Hello everyone this is PYTHON it's a beginner's language"
+>>> str1.isupper()
+False
+>>> str1.islower()
+False
+>>> str1.istitlw()
+Traceback (most recent call last):
+  File "<pyshell#17>", line 1, in <module>
+    str1.istitlw()
+AttributeError: 'str' object has no attribute 'istitlw'
+>>> str1.istitle()
+False
+>>> str1.split()
+['Hello', 'everyone', 'this', 'is', 'PYTHON', "it's", 'a', "beginner's", 'language']
+>>> str1.split("s")
+['Hello everyone thi', ' i', " PYTHON it'", " a beginner'", ' language']
+>>> str1.split("e")
+['H', 'llo ', 'v', 'ryon', " this is PYTHON it's a b", 'ginn', "r's languag", '']
+>>> str1
+"Hello everyone this is PYTHON it's a beginner's language"
+>>> str2 = ' it's very easy '
+SyntaxError: invalid syntax
+>>> str2 = " it's very easy "
+>>> str2 = ' "python" is very easy'
+>>> str2
+' "python" is very easy'
+>>>  ' "Women\'s day" '
+ 
+SyntaxError: unexpected indent
+>>> str3 = ' "Women\'s day" '
+>>> str3
+' "Women\'s day" '
+>>> print(str3)
+ "Women's day" 
+>>> str3 = " \"Women's day\" "
+>>> print(str3)
+ "Women's day" 
+>>> 
+>>> str1.split()
+['Hello', 'everyone', 'this', 'is', 'PYTHON', "it's", 'a', "beginner's", 'language']
+>>> str1
+"Hello everyone this is PYTHON it's a beginner's language"
+>>> # str1 -> immutable
+>>> str1
+"Hello everyone this is PYTHON it's a beginner's language"
+>>> str1[0]
+'H'
+>>> str1[0] = 'h'
+Traceback (most recent call last):
+  File "<pyshell#39>", line 1, in <module>
+    str1[0] = 'h'
+TypeError: 'str' object does not support item assignment
+>>> del str1[0]
+Traceback (most recent call last):
+  File "<pyshell#40>", line 1, in <module>
+    del str1[0]
+TypeError: 'str' object doesn't support item deletion
+>>> result = str1.split()
+>>> type(result)
+<class 'list'>
+>>> str1
+"Hello everyone this is PYTHON it's a beginner's language"
+>>> result
+['Hello', 'everyone', 'this', 'is', 'PYTHON', "it's", 'a', "beginner's", 'language']
+>>> del result[2]
+>>> result
+['Hello', 'everyone', 'is', 'PYTHON', "it's", 'a', "beginner's", 'language']
+>>> del result[2]
+>>> result
+['Hello', 'everyone', 'PYTHON', "it's", 'a', "beginner's", 'language']
+>>> del result[3]
+>>> result
+['Hello', 'everyone', 'PYTHON', 'a', "beginner's", 'language']
+>>> del result[3]
+>>> result
+['Hello', 'everyone', 'PYTHON', "beginner's", 'language']
+>>> " ".join(result)
+"Hello everyone PYTHON beginner's language"
+>>> "***".join(result)
+"Hello***everyone***PYTHON***beginner's***language"
+>>> str4 = "http://cloudfront.net/index.mpd?token=abjdnksdmdlmdanl"
+>>> str4.split()
+['http://cloudfront.net/index.mpd?token=abjdnksdmdlmdanl']
+>>> str4.split("=")
+['http://cloudfront.net/index.mpd?token', 'abjdnksdmdlmdanl']
+>>> str4 = "http://cloudfront.net/index.mpd?token=abjdnksdmdlmdanl$%^&*CHNCFGHJBBJN=^&*%^"
+>>> str4.split("=")
+['http://cloudfront.net/index.mpd?token', 'abjdnksdmdlmdanl$%^&*CHNCFGHJBBJN', '^&*%^']
+>>> 
+>>> str4.partition("=")
+('http://cloudfront.net/index.mpd?token', '=', 'abjdnksdmdlmdanl$%^&*CHNCFGHJBBJN=^&*%^')
+>>> 
+>>> str4.split("=", 1)
+['http://cloudfront.net/index.mpd?token', 'abjdnksdmdlmdanl$%^&*CHNCFGHJBBJN=^&*%^']
+>>> str4.rsplit("=", 1)
+['http://cloudfront.net/index.mpd?token=abjdnksdmdlmdanl$%^&*CHNCFGHJBBJN', '^&*%^']
+>>> str4.rpartition("=")
+('http://cloudfront.net/index.mpd?token=abjdnksdmdlmdanl$%^&*CHNCFGHJBBJN', '=', '^&*%^')
+>>> 
+>>> heading = "GAME ZONE"
+>>> heading.center(90)
+'                                        GAME ZONE                                         '
+>>> heading.center(120)
+'                                                       GAME ZONE                                                        '
+>>> heading.ljust(120)
+'GAME ZONE                                                                                                               '
+>>> #ljust -> left justified, rjust -> right justified
+>>> heading.rjust(120)
+'                                                                                                               GAME ZONE'
+>>> product = "             Analog Women's Watch - Fastrack                 "
+>>> product.strip() #leading and trailing spaces will be removed
+"Analog Women's Watch - Fastrack"
+>>> str1
+"Hello everyone this is PYTHON it's a beginner's language"
+>>> str1.replace( 'H', 'h' )
+"hello everyone this is PYThON it's a beginner's language"
+>>> str1
+"Hello everyone this is PYTHON it's a beginner's language"
+>>> id(str1)
+4432660832
+>>> str1 = str1.replace( 'H', 'h' )
+>>> id(str1)
+4463282416
+>>> str1
+"hello everyone this is PYThON it's a beginner's language"
+>>> str1.replace("PYThON", "C++")
+"hello everyone this is C++ it's a beginner's language"
+>>> str5 = "Hello everyone \nthis is python \nit's a beginner's language"
+>>> str5.splitlines()
+['Hello everyone ', 'this is python ', "it's a beginner's language"]
+>>> str1.find("PYTHON")
+-1
+>>> str1.find("PYThON")
+23
+>>> str1[23]
+'P'
+>>> str1.find('PYThON')
+23
 >>> 
