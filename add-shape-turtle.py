@@ -5,6 +5,8 @@ fred = turtle.Pen()
 # screen.addshape("walking-turtle", "walking-turtle.gif")
 # fred.shape("walking-turtle")
 walking_turtle = "walking-turtle.gif"
+# "C:/Users/Lenovo/Downloads/walking-turtle.gif"
+# "C:\\Users\\Lenovo\\Downloads\\walking-turtle.gif"
 screen.addshape(walking_turtle)
 fred.shape(walking_turtle)
 fred.resizemode("user")
