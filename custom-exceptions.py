@@ -1,15 +1,17 @@
 # raise and assert keywords are used to generate exceptions by user
 def checkPin():
     userPIN = int(input("Enter PIN: "))
-    if userPIN != 1234:
-        raise ValueError('Incorrect PIN')
+    assert userPIN == 1234, "Incorrect PIN"
+    # if userPIN != 1234:
+    #     raise ValueError('Incorrect PIN')
 
 
 def checkBalance():
     accountBalance = 10000
     amount = int(input('Enter amount to withdraw: '))
-    if amount > accountBalance:
-        raise TypeError('Insufficient Amount')
+    assert amount <= accountBalance, "Insufficient amount"
+    # if amount > accountBalance:
+    #     raise TypeError('Insufficient Amount')
 
 
 def withdraw():
@@ -21,6 +23,8 @@ def withdraw():
 try:
     withdraw()
 
+except AssertionError as e:
+    print("Exception occured", e)
 except ValueError as e:
     print("Value error occured")
     print(e)
