@@ -48,8 +48,19 @@ def mainScreen():
 
     x = 100
     y = 100
-    moveX = 1
-    moveY = 1
+    # moveX = random.randint(5, 10)
+    # moveY = random.randint(5, 10)
+    moveX = 0
+    moveY = 0
+    counter = 0
+    font = pygame.font.SysFont("assets/font_1.ttf", 30)
+    x2 = random.randint(0, width - 50)
+    y2 = random.randint(0, height - 50)
+    frog = pygame.image.load("assets/frog_2.png")
+    coinSound = pygame.mixer.Sound("assets/point.wav")
+    snakeWidth = 50
+    snakeBody = []
+    snakeLength = 1
 
     while True:
         for event in pygame.event.get():
@@ -57,16 +68,67 @@ def mainScreen():
             if event.type == pygame.QUIT:
                 pygame.quit()  # quits pygame
                 quit()  # quits python
+            if event.type == pygame.KEYDOWN:  # control snake using keys
+                if event.key == pygame.K_UP:
+                    moveY = -5
+                    moveX = 0
+                if event.key == pygame.K_DOWN:
+                    moveY = 5
+                    moveX = 0
+                if event.key == pygame.K_LEFT:
+                    moveX = -5
+                    moveY = 0
+                if event.key == pygame.K_RIGHT:
+                    moveX = 5
+                    moveY = 0
 
         screen.fill(white)
+
+        scoreMsg = f"Score : {counter}"
+        scoreText = font.render(scoreMsg, True, red)
+        screen.blit(scoreText, (20, 20))
 
         # surface, color, (x,y), radius
         # pygame.draw.circle(screen, blue, (x, y), 50)
 
         # surface, color, (x,y,length,breadth)
-        pygame.draw.rect(screen, blue, (x, y, 100, 100))
+        rect1 = pygame.draw.rect(screen, blue, (x, y, snakeWidth, 50))
+        rect2 = pygame.draw.rect(screen, red, (x2, y2, 50, 50))
+        screen.blit(frog, (x2, y2))
         x += moveX
         y += moveY
+
+        snakeBody.append([x, y])
+        if len(snakeBody) > snakeLength:
+            del snakeBody[0]
+
+        print(snakeBody)
+
+        if rect1.colliderect(rect2):
+            x2 = random.randint(0, width - 50)
+            y2 = random.randint(0, height - 50)
+            coinSound.play()
+            counter += 1
+            # snakeWidth += 50
+            snakeLength += 1
+
+        if y < -50:   # snake game animation
+            y = height
+        if x < -50:
+            x = width
+        if x > width:
+            x = -50
+        if y > height:
+            y = -50
+
+        # if x + 100 > width:   # ball game animation
+        #     moveX = random.randint(-10, -5)
+        # elif x < 0:
+        #     moveX = random.randint(5, 10)
+        # elif y < 0:
+        #     moveY = random.randint(5, 10)
+        # elif y + 100 > height:
+        #     moveY = random.randint(-10, -5)
 
         pygame.display.update()
 
