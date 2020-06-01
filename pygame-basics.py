@@ -18,7 +18,7 @@ blue = 0, 55, 255
 screen.fill(green)
 
 bg_music = pygame.mixer.Sound('assets/music_1.wav')
-# bg_music.play(-1)
+# bg_music.play(-1)  # -1 means keep playing the sound continuously
 
 snake_bg = pygame.image.load('assets/snake_bg.png')
 screen.blit(snake_bg, (0, 0))
@@ -70,16 +70,16 @@ def mainScreen():
                 quit()  # quits python
             if event.type == pygame.KEYDOWN:  # control snake using keys
                 if event.key == pygame.K_UP:
-                    moveY = -5
+                    moveY = -10
                     moveX = 0
                 if event.key == pygame.K_DOWN:
-                    moveY = 5
+                    moveY = 10
                     moveX = 0
                 if event.key == pygame.K_LEFT:
-                    moveX = -5
+                    moveX = -10
                     moveY = 0
                 if event.key == pygame.K_RIGHT:
-                    moveX = 5
+                    moveX = 10
                     moveY = 0
 
         screen.fill(white)
@@ -92,8 +92,10 @@ def mainScreen():
         # pygame.draw.circle(screen, blue, (x, y), 50)
 
         # surface, color, (x,y,length,breadth)
-        rect1 = pygame.draw.rect(screen, blue, (x, y, snakeWidth, 50))
-        rect2 = pygame.draw.rect(screen, red, (x2, y2, 50, 50))
+        # rect1 = pygame.draw.rect(screen, blue, (x, y, snakeWidth, 50))
+        # rect2 = pygame.draw.rect(screen, red, (x2, y2, 50, 50))
+        rect1 = pygame.Rect((x, y, 50, 50))
+        rect2 = pygame.Rect((x2, y2, 50, 50))
         screen.blit(frog, (x2, y2))
         x += moveX
         y += moveY
@@ -103,6 +105,11 @@ def mainScreen():
             del snakeBody[0]
 
         print(snakeBody)
+
+        for bodyPart in snakeBody:
+            color = random.randint(0, 255), random.randint(
+                0, 255), random.randint(0, 255)
+            pygame.draw.rect(screen, color, (bodyPart[0], bodyPart[1], 50, 50))
 
         if rect1.colliderect(rect2):
             x2 = random.randint(0, width - 50)
