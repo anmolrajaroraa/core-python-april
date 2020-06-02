@@ -53,7 +53,8 @@ def mainScreen():
     moveX = 0
     moveY = 0
     counter = 0
-    font = pygame.font.SysFont("assets/font_1.ttf", 30)
+    # font = pygame.font.SysFont("assets/font_1.ttf", 30)
+    font = pygame.font.SysFont(None, 30)
     x2 = random.randint(0, width - 50)
     y2 = random.randint(0, height - 50)
     frog = pygame.image.load("assets/frog_2.png")
@@ -100,9 +101,11 @@ def mainScreen():
         x += moveX
         y += moveY
 
-        snakeBody.append([x, y])
+        # snakeBody.append([x, y])
+        snakeBody.insert(0, [x, y])
         if len(snakeBody) > snakeLength:
-            del snakeBody[0]
+            del snakeBody[-1]
+            # pass
 
         print(snakeBody)
 
